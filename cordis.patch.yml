@@ -1,0 +1,4 @@
+# dsh-session-manage — delete ARCHIVED sessions (body + refs/indexes)
+- insert:
+    - id: dsh-session-manage
+      name: dsh-session-manage

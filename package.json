@@ -1,0 +1,62 @@
+{
+  "name": "dsh-session-manage",
+  "displayName": "DSH Session Manage",
+  "description": "List and delete archived DSH sessions (session body, workspace refs, projcache) from a left-sidebar entry that opens a panel in the main column. The panel hot-refreshes from the live workspace feed, and a deleted archive leaves the sidebar session list immediately, without a page reload. Never touches unarchived sessions.",
+  "version": "0.4.0",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "session",
+    "archive",
+    "cleanup"
+  ],
+  "type": "module",
+  "engines": {
+    "dsh": ">=0.1.5-rc.1",
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/delete-flow.test.mjs ."
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md"
+  ],
+  "license": "UNLICENSED",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
